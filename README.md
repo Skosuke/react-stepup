@@ -23,10 +23,15 @@ cd react-ts-app/
 package.json の以下上書き
 
 "@testing-library/react": "^12.0.0"
+
 "@testing-library/user-event": "^12.0.0"
+
 "@types/react": "^17.0.0"
+
 "@types/react-dom": "^17.0.0"
+
 "react": "^17.0.0"
+
 "react-dom": "^17.0.0"
 
 container
