@@ -88,3 +88,59 @@ https://note.com/hiropython/n/ne4c5611d1d01
 https://create-react-app.dev/docs/getting-started/
 
 https://zenn.dev/fuuukeee3/articles/9cd87e664a87e4
+
+## styled-jsx でエラー起きた
+
+react-ts-app/src/typings/custom.d.ts
+を追記することで解決。
+jsx に対して型宣言が必要らしい。詳しくはよくわからず。
+
+<参考 URL>
+https://www.anycodings.com/1questions/1127914/styled-jsx-typescript-error-after-migrating-to-monorepo-structure-property-jsx-does-not-exist-on-type-detailedhtmlprops
+
+## emotion でエラー起きた
+
+「react-ts-app/tsconfig.json」に以下を追記
+
+```
+"compilerOptions": {
+    "types": ["@emotion/react/types/css-prop"]
+  }
+```
+
+## emotion 使えない問題
+
+コード上部に以下追記することで解決
+
+```
+/** @jsxImportSource @emotion/react */
+```
+
+## 後からインストールしたパッケージ
+
+### パッケージ
+
+npm install node-sass
+
+npm install styled-jsx
+
+npm install styled-components
+
+npm i --save-dev @emotion/react
+
+npm i --save-dev @emotion/styled
+
+### 型定義パッケージ
+
+npm i --save-dev @types/styled-components
+
+## save と save-dev ってなに？
+
+npm install と npm install --save-dev の違いは、パッケージを本番環境で使うか、開発環境で使うかだけの違いです。
+
+<参考 URL>
+https://zenn.dev/hrkmtsmt/articles/5f4a0e5c79b77a
+
+## vscode のプライグイン
+
+vscode-styled-components: styled-components の入力補完
