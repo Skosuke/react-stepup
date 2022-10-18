@@ -88,3 +88,21 @@ https://note.com/hiropython/n/ne4c5611d1d01
 https://create-react-app.dev/docs/getting-started/
 
 https://zenn.dev/fuuukeee3/articles/9cd87e664a87e4
+
+## react-router-dom をインストール
+
+react17 では 6 系が正常動作しないため 5 を指定
+
+@types/react-router-dom は typescript 環境で必要
+
+```
+npm i --save-dev react-router-dom@5.3.0
+npm i --save-dev @types/react-router-dom
+```
+
+## styled-components をインストール
+
+```
+npm i --save-dev styled-components@5.3.6
+npm i --save-dev @types/styled-components@5.1.26
+```
