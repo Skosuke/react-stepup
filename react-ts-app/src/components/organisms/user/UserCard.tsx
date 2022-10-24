@@ -13,12 +13,13 @@ interface UserProps {
     };
     website: string;
   };
+  isAdmin: boolean;
 }
 
-export const UserCard = ({ user }: UserProps) => {
+export const UserCard = ({ user, isAdmin }: UserProps) => {
   return (
     <Card>
-      <UserIconWithName image={user.image} name={user.name} />
+      <UserIconWithName image={user.image} name={user.name} isAdmin={isAdmin} />
       <SDL>
         <dt>メール</dt>
         <dd>{user.email}</dd>

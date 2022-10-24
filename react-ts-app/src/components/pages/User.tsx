@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { SerchInput } from '../molecules/SearchInput';
 import { UserCard } from '../organisms/user/UserCard';
@@ -17,14 +18,20 @@ const users = [...Array(10).keys()].map((val) => {
   };
 });
 
+interface UserState {
+  isAdmin: boolean;
+}
+
 export const User = () => {
+  const { state } = useLocation<UserState>();
+  const isAdmin = state ? state.isAdmin : false;
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SerchInput />
       <SUserArea>
-        {users.map((user) => (
-          <UserCard key={user.id} user={user} />
+        {users.map((obj) => (
+          <UserCard key={obj.id} user={obj} isAdmin={isAdmin} />
         ))}
       </SUserArea>
     </SContainer>
