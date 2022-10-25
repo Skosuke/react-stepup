@@ -1,5 +1,7 @@
-import { useLocation } from 'react-router-dom';
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { UserContext } from '../../providers/UserProvider';
+import { SecondaryButton } from '../atoms/button/SecondaryButton';
 import { SerchInput } from '../molecules/SearchInput';
 import { UserCard } from '../organisms/user/UserCard';
 
@@ -18,20 +20,20 @@ const users = [...Array(10).keys()].map((val) => {
   };
 });
 
-interface UserState {
-  isAdmin: boolean;
-}
-
 export const User = () => {
-  const { state } = useLocation<UserState>();
-  const isAdmin = state ? state.isAdmin : false;
+  const { userInfo, setUserInfo } = useContext<any>(UserContext);
+  const onClickSwitch = () => {
+    setUserInfo({ isAdmin: !userInfo.isAdmin });
+  };
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SerchInput />
+      <br />
+      <SecondaryButton onClick={onClickSwitch}>切り替え</SecondaryButton>
       <SUserArea>
         {users.map((obj) => (
-          <UserCard key={obj.id} user={obj} isAdmin={isAdmin} />
+          <UserCard key={obj.id} user={obj} />
         ))}
       </SUserArea>
     </SContainer>

@@ -1,24 +1,27 @@
+import { memo, useContext } from 'react';
 import styled from 'styled-components';
+import { UserContext } from '../../../providers/UserProvider';
 
 interface UserIconWithNameProps {
   image: string;
   name: string;
-  isAdmin: boolean;
 }
 
-export const UserIconWithName = ({
-  image,
-  name,
-  isAdmin,
-}: UserIconWithNameProps) => {
-  return (
-    <SContainer>
-      <SImg height={160} width={120} src={image} alt={name} />
-      <SName>{name}</SName>
-      {isAdmin && <SEdit>編集</SEdit>}
-    </SContainer>
-  );
-};
+export const UserIconWithName = memo(
+  ({ image, name }: UserIconWithNameProps) => {
+    console.log('UserIconWithName');
+    const { userInfo } = useContext<any>(UserContext);
+    const isAdmin = userInfo ? userInfo.isAdmin : false;
+
+    return (
+      <SContainer>
+        <SImg height={160} width={120} src={image} alt={name} />
+        <SName>{name}</SName>
+        {isAdmin && <SEdit>編集</SEdit>}
+      </SContainer>
+    );
+  }
+);
 
 const SContainer = styled.div`
   text-align: center;
